@@ -40,8 +40,8 @@ class AuthController extends Controller
                 // si todo ok
                 return SimpleJSONResponse::successResponse(
                     [
-                        'user_data' => $user,
-                        'tokken' => $token
+                        'user' => $user,
+                        'token' => $token
                     ],
                     'Usuario logueado exitosamente',
                     200
