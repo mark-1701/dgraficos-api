@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('phone_number');
             $table->longText('address')->nullable();
+            // anio de nacimiento para determinar edad
             $table->date('date_of_birth')->nullable();
             $table->string('profile_picture_uri')->nullable();
             $table->rememberToken();
