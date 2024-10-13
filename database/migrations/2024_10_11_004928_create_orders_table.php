@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_status_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('guest_user_id')->nullable();
-            $table->longText('notes');
-            $table->date('date');
+            $table->longText('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('order_status_id')->references('id')->on('order_statuses');

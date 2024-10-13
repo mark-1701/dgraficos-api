@@ -2,30 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
-use App\Utilities\FileHandler;
+use App\Models\Order;
 use App\Utilities\SimpleCRUD;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
-    // ! faltan los request en esta clase
-
     public $crud;
 
     public function __construct()
     {
-        $this->crud = new SimpleCRUD(new Product);
+        $this->crud = new SimpleCRUD(new Order);
     }
-
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): JsonResponse
     {
-        return $this->crud->index(ProductResource::class, $request->pagination);
+        return $this->crud->index(null, $request->pagination);
     }
 
     /**
@@ -41,18 +36,15 @@ class ProductController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return $this->crud->store(
-            FileHandler::handleSingleFileUpload($request, 'image_uri'),
-            null
-        );
+        return $this->crud->store($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        return $this->crud->show($id);
     }
 
     /**
@@ -68,11 +60,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id): JsonResponse
     {
-        return $this->crud->update(
-            FileHandler::handleSingleFileUpload($request, 'image_uri'),
-            $id,
-            null
-        );
+        return $this->crud->update($request, $id);
     }
 
     /**
