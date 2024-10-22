@@ -11,6 +11,7 @@ Route::post('login', [AuthController::class, 'login']);
 // rutas publicas
 Route::get('product', [ProductController::class, 'index']);
 Route::resource('order', OrderController::class);
+Route::post('order/orderall', [OrderController::class, 'orderAll']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // * rutas login
