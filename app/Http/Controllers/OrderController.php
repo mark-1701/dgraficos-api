@@ -92,7 +92,6 @@ class OrderController extends Controller
         $guestUser->date_of_birth = $request->date_of_birth;
         $guestUser->save();
 
-
         // crear el registro del estado
         $order->order_status_id = 1;
         $order->guest_user_id = $guestUser->id;
@@ -100,7 +99,7 @@ class OrderController extends Controller
 
         foreach ($products as $product) {
             // formato de los inputs
-            $productInputId = 'product-' . $product['id'];
+            $productInputId = 'product-file-' . $product['id'];
             // saber si hay un id de customization del producto
             $productCustomizationId = -1;
 
