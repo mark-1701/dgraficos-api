@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
@@ -20,5 +21,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user-profile', [AuthController::class, 'userProfile']);
     Route::get('logout', [AuthController::class, 'logout']);
     Route::resource('user', UserController::class);
-    Route::resource('product', ProductController::class)->except(['index']);;
+    Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class)->except(['index']);
 });
