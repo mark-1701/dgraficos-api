@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\OrderStatusController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,5 +23,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::resource('user', UserController::class);
     Route::resource('category', CategoryController::class);
+    Route::resource('order-status', OrderStatusController::class);
     Route::resource('product', ProductController::class)->except(['index']);
 });
